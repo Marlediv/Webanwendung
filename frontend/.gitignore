@@ -34,3 +34,4 @@ tailwind.config.js
 vite.config.js
 src/assets/react.svg
 public/vite.svg
+.dockerignore

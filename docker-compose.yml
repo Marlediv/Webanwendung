@@ -11,7 +11,7 @@ services:
     volumes:
       - ./database:/docker-entrypoint-initdb.d
     ports:
-      - "5432:5432"
+      - "5433:5432"
 
   backend:
     build: ./backend
@@ -19,13 +19,14 @@ services:
     depends_on:
       - db
     environment:
+      - FLASK_APP=run:app
       - DB_HOST=db
       - DB_PORT=5432
       - DB_USER=admin
       - DB_PASSWORD=secret
       - DB_NAME=projekt_db
     ports:
-      - "5000:5000"
+      - "5001:5000"
     volumes:
       - ./backend:/app
 
@@ -36,5 +37,5 @@ services:
       - "5173:5173"
     depends_on:
       - backend
-    volumes:
-      - ./frontend:/app
+#    volumes:
+#      - ./frontend:/app
